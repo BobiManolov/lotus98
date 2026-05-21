@@ -1,0 +1,1134 @@
+!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y4XJZD7Q0M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-Y4XJZD7Q0M');
+</script>
+
+
+
+
+<title>Калкулатор — Комарници — Лотос 98 ООД</title>
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --red: #8B0000; --red-light: #f9f0f0;
+  --text: #1a1a1a; --muted: #666; --border: #ddd;
+  --bg: #fff; --surface: #fafafa;
+}
+body { font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--text); background: #f4f1ec; min-height: 100vh; width: 100%; display: flex; align-items: flex-start; justify-content: center; padding: 40px 16px 60px; }
+.page { width: 100%; max-width: 580px; margin: 0 auto; }
+.header { text-align: center; margin-bottom: 36px; }
+.logo-line { font-family: 'Crimson Pro', serif; font-size: 13px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+h1 { font-family: 'Crimson Pro', serif; font-size: 32px; font-weight: 600; color: var(--text); line-height: 1.2; margin-bottom: 6px; }
+.subtitle { font-size: 13px; color: var(--muted); letter-spacing: 0.02em; }
+
+.card { background: var(--bg); border-radius: 16px; padding: 28px 32px; box-shadow: 0 2px 24px rgba(0,0,0,0.07); margin-bottom: 16px; }
+.card-title { font-family: 'Crimson Pro', serif; font-size: 18px; font-weight: 600; color: var(--text); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #f0f0f0; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field.full { grid-column: 1 / -1; }
+label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+input[type="number"], select { font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--text); background: var(--surface); border: 1.5px solid var(--border); border-radius: 10px; padding: 11px 14px; outline: none; transition: border-color 0.2s, box-shadow 0.2s; -webkit-appearance: none; appearance: none; width: 100%; }
+input[type="number"]:focus, select:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(139,0,0,0.08); background: #fff; }
+input[type="number"]::placeholder { color: #bbb; font-size: 13px; }
+.select-wrap { position: relative; }
+.select-wrap::after { content: ''; position: absolute; right: 14px; top: 50%; transform: translateY(-50%); width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 6px solid var(--muted); pointer-events: none; }
+.select-wrap select { padding-right: 36px; cursor: pointer; }
+
+/* DOOR OPTIONS — скрити по подразбиране */
+.door-options { grid-column: 1 / -1; display: none; }
+.door-options.visible { display: contents; }
+.door-option-field { grid-column: 1 / -1; }
+
+/* Разделител за допълнителните опции */
+.door-divider {
+  grid-column: 1 / -1;
+  display: none;
+  align-items: center;
+  gap: 10px;
+  margin: 4px 0 0;
+}
+.door-divider.visible { display: flex; }
+.door-divider-line { flex: 1; height: 1px; background: #f0e8e8; }
+.door-divider-label { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); opacity: 0.7; white-space: nowrap; }
+
+/* Чекбокс стил за опции на вратата */
+.checkbox-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--red-light);
+  border: 1.5px solid #f0c8c8;
+  border-radius: 10px;
+  padding: 11px 14px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  user-select: none;
+}
+.checkbox-field:hover { border-color: var(--red); background: #f5e8e8; }
+.checkbox-field input[type="checkbox"] { display: none; }
+.checkbox-box {
+  width: 18px; height: 18px; min-width: 18px;
+  border: 1.5px solid #d0a0a0;
+  border-radius: 5px;
+  background: #fff;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, border-color 0.2s;
+}
+.checkbox-field input:checked ~ .checkbox-box {
+  background: var(--red);
+  border-color: var(--red);
+}
+.checkbox-field input:checked ~ .checkbox-box::after {
+  content: '';
+  width: 4px; height: 8px;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(45deg) translate(-1px, -1px);
+  display: block;
+}
+.checkbox-text { flex: 1; }
+.checkbox-text strong { font-size: 13px; font-weight: 500; color: var(--text); display: block; text-transform: none; letter-spacing: 0; }
+.checkbox-text small { font-size: 11px; color: var(--muted); text-transform: none; letter-spacing: 0; }
+
+.btn-add { margin-top: 18px; width: 100%; background: var(--red); color: #fff; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; border: none; border-radius: 10px; padding: 14px; cursor: pointer; transition: background 0.2s, transform 0.1s; letter-spacing: 0.02em; }
+.btn-add:hover { background: #6d0000; }
+.btn-add:active { transform: scale(0.98); }
+
+.preview { margin-top: 14px; min-height: 40px; }
+.preview-price { display: flex; align-items: baseline; gap: 10px; padding: 12px 16px; background: var(--red-light); border: 1px solid #f0c8c8; border-radius: 10px; }
+.preview-eur { font-family: 'Crimson Pro', serif; font-size: 28px; font-weight: 600; color: var(--red); line-height: 1; }
+.preview-lv { font-family: 'Crimson Pro', serif; font-size: 18px; color: var(--red); opacity: 0.8; }
+.preview-label { font-size: 12px; color: var(--muted); margin-left: auto; }
+.err-msg { color: #c0392b; font-size: 13px; padding: 12px 16px; background: #fef0f0; border: 1px solid #f5c6c6; border-radius: 10px; margin-top: 12px; }
+
+.basket-card { background: var(--bg); border-radius: 16px; padding: 28px 32px; box-shadow: 0 2px 24px rgba(0,0,0,0.07); margin-bottom: 16px; }
+.basket-empty { text-align: center; padding: 28px 0; color: var(--muted); font-size: 14px; }
+.basket-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
+.basket-item:last-child { border-bottom: none; }
+.basket-num { width: 24px; height: 24px; min-width: 24px; border-radius: 50%; background: var(--red); color: #fff; font-size: 12px; font-weight: 500; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+.basket-info { flex: 1; }
+.basket-type { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+.basket-dims { font-size: 12px; color: var(--muted); }
+.basket-dims .tag { display: inline-block; font-size: 10px; font-weight: 500; padding: 1px 6px; border-radius: 20px; background: var(--red-light); color: var(--red); margin-left: 4px; vertical-align: middle; text-transform: uppercase; }
+.basket-price { font-family: 'Crimson Pro', serif; font-size: 20px; font-weight: 600; color: var(--red); white-space: nowrap; margin-top: 2px; }
+.basket-price-lv { font-size: 11px; color: var(--muted); text-align: right; margin-top: 1px; }
+.btn-remove { background: none; border: none; cursor: pointer; color: #ccc; font-size: 18px; line-height: 1; padding: 2px 4px; margin-top: 2px; transition: color 0.15s; }
+.btn-remove:hover { color: var(--red); }
+
+.options-card { background: var(--bg); border-radius: 16px; padding: 28px 32px; box-shadow: 0 2px 24px rgba(0,0,0,0.07); margin-bottom: 16px; }
+.option-row { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #f0f0f0; }
+.option-row:last-child { border-bottom: none; }
+.option-label { font-size: 14px; color: var(--text); }
+.option-label small { display: block; font-size: 12px; color: var(--muted); margin-top: 2px; }
+.toggle-wrap { display: flex; align-items: center; gap: 8px; }
+.toggle { position: relative; width: 44px; height: 24px; }
+.toggle input { opacity: 0; width: 0; height: 0; }
+.toggle-slider { position: absolute; inset: 0; background: #ddd; border-radius: 24px; cursor: pointer; transition: background 0.2s; }
+.toggle-slider::before { content: ''; position: absolute; width: 18px; height: 18px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: transform 0.2s; }
+.toggle input:checked + .toggle-slider { background: var(--red); }
+.toggle input:checked + .toggle-slider::before { transform: translateX(20px); }
+.toggle input:disabled + .toggle-slider { opacity: 0.5; cursor: not-allowed; }
+.toggle-price { font-size: 13px; color: var(--muted); white-space: nowrap; }
+.locked-note { font-size: 11px; color: var(--red); background: var(--red-light); padding: 2px 8px; border-radius: 20px; }
+
+.total-card { background: var(--red); border-radius: 16px; padding: 24px 32px; box-shadow: 0 2px 24px rgba(139,0,0,0.2); margin-bottom: 16px; }
+.total-lines { margin-bottom: 16px; }
+.total-line { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; font-size: 13px; color: rgba(255,255,255,0.75); }
+.total-line span:last-child { color: rgba(255,255,255,0.9); font-weight: 500; }
+.total-divider { border: none; border-top: 1px solid rgba(255,255,255,0.2); margin: 10px 0; }
+.total-main { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.total-eur { font-family: 'Crimson Pro', serif; font-size: 48px; font-weight: 600; color: #fff; line-height: 1; }
+.total-lv { font-family: 'Crimson Pro', serif; font-size: 26px; font-weight: 400; color: rgba(255,255,255,0.85); line-height: 1; }
+
+.info-note { background: var(--red-light); border: 1px solid #f0c8c8; border-radius: 12px; padding: 16px 20px; margin-bottom: 16px; }
+.info-row { font-size: 13px; color: #5a1a1a; line-height: 1.6; }
+.info-row + .info-row { margin-top: 6px; }
+.info-row strong { color: var(--red); font-weight: 500; }
+.footer { margin-top: 12px; text-align: center; font-size: 12px; color: #999; line-height: 1.8; }
+.footer a { color: var(--red); text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
+
+@media (max-width: 480px) {
+  .card, .basket-card, .options-card { padding: 22px 18px; }
+  .total-card { padding: 20px 18px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .field.full { grid-column: 1; }
+  .door-option-field { grid-column: 1; }
+  h1 { font-size: 26px; }
+  .total-eur { font-size: 38px; }
+  .total-lv { font-size: 20px; }
+}
+
+/* ЛЕНТА ИНСТРУКЦИЯ */
+.header { position: relative; }
+.btn-help { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-top: 16px; background: var(--red); color: #fff; border: none; border-radius: 12px; padding: 12px 18px; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: background 0.2s, transform 0.1s; }
+.btn-help:hover { background: #6d0000; }
+.btn-help:active { transform: scale(0.99); }
+.btn-help-left { display: flex; align-items: center; gap: 10px; }
+.btn-help-icon { width: 22px; height: 22px; min-width: 22px; border-radius: 50%; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-family: 'Crimson Pro', serif; font-size: 15px; font-weight: 600; line-height: 1; }
+.btn-help-text { font-size: 14px; font-weight: 500; letter-spacing: 0.01em; text-align: left; }
+.btn-help-sub { font-size: 11px; opacity: 0.75; margin-top: 1px; }
+.btn-help-arrow { font-size: 18px; opacity: 0.7; transition: transform 0.2s; }
+.btn-help:hover .btn-help-arrow { transform: translateX(4px); opacity: 1; }
+
+/* MODAL */
+.modal-overlay { position: fixed; inset: 0; background: rgba(20,10,10,0.45); z-index: 1000; display: flex; align-items: center; justify-content: center; padding: 20px; opacity: 0; pointer-events: none; transition: opacity 0.25s; }
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal { background: #fff; border-radius: 20px; width: 100%; max-width: 540px; max-height: 82vh; display: flex; flex-direction: column; box-shadow: 0 8px 48px rgba(139,0,0,0.18); transform: translateY(18px) scale(0.98); transition: transform 0.25s, opacity 0.25s; opacity: 0; }
+.modal-overlay.open .modal { transform: translateY(0) scale(1); opacity: 1; }
+.modal-header { display: flex; align-items: center; justify-content: space-between; padding: 22px 28px 16px; border-bottom: 1px solid #f0f0f0; flex-shrink: 0; }
+.modal-title { font-family: 'Crimson Pro', serif; font-size: 22px; font-weight: 600; color: var(--text); }
+.modal-close { background: none; border: none; cursor: pointer; color: #bbb; font-size: 22px; line-height: 1; padding: 2px 6px; border-radius: 6px; transition: color 0.15s, background 0.15s; }
+.modal-close:hover { color: var(--red); background: var(--red-light); }
+.modal-body { overflow-y: auto; padding: 20px 28px 28px; }
+.modal-body::-webkit-scrollbar { width: 5px; }
+.modal-body::-webkit-scrollbar-thumb { background: #e8d0d0; border-radius: 10px; }
+.instr-step { display: flex; gap: 14px; margin-bottom: 18px; }
+.instr-step:last-child { margin-bottom: 0; }
+.instr-num { width: 26px; height: 26px; min-width: 26px; border-radius: 50%; background: var(--red); color: #fff; font-size: 12px; font-weight: 500; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+.instr-content { flex: 1; }
+.instr-title { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+.instr-text { font-size: 13px; color: var(--muted); line-height: 1.65; }
+.instr-text strong { color: var(--text); font-weight: 500; }
+.instr-box { background: var(--red-light); border: 1px solid #f0c8c8; border-radius: 10px; padding: 12px 14px; margin-top: 10px; }
+.instr-box-title { font-size: 13px; font-weight: 500; color: var(--red); margin-bottom: 6px; }
+
+.btn-print { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: #fff; color: var(--red); font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 500; border: 1.5px solid #f0c8c8; border-radius: 10px; padding: 13px; cursor: pointer; transition: background 0.2s, border-color 0.2s; margin-bottom: 16px; }
+.btn-print:hover { background: var(--red-light); border-color: var(--red); }
+.btn-print svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+#printOffer { display: none; }
+
+@media print {
+  @page { margin: 18mm 16mm; size: A4; }
+  body { background: #fff !important; padding: 0 !important; display: block !important; font-size: 13px !important; }
+  .page { max-width: 100% !important; }
+  .header, .card, .basket-card, .options-card, .total-card,
+  .info-note, .footer, .btn-print { display: none !important; }
+  #printOffer { display: block !important; }
+  .po-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #8B0000; padding-bottom: 14px; margin-bottom: 20px; }
+  .po-company-name { font-size: 20px; font-weight: 700; color: #8B0000; letter-spacing: 0.05em; margin-bottom: 4px; }
+  .po-company-info { font-size: 11px; color: #555; line-height: 1.7; }
+  .po-meta { text-align: right; }
+  .po-meta-title { font-size: 22px; font-weight: 700; color: #1a1a1a; margin-bottom: 6px; }
+  .po-meta-date { font-size: 12px; color: #555; }
+  .po-meta-valid { font-size: 11px; color: #8B0000; margin-top: 4px; }
+  .po-section-title { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #8B0000; margin: 18px 0 8px; }
+  .po-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .po-table th { background: #8B0000; color: #fff; padding: 7px 10px; text-align: left; font-weight: 500; font-size: 11px; }
+  .po-table th:last-child, .po-table td:last-child { text-align: right; }
+  .po-table th:nth-child(2), .po-table td:nth-child(2) { text-align: center; }
+  .po-table th:nth-child(3), .po-table td:nth-child(3) { text-align: center; }
+  .po-table th:nth-child(4), .po-table td:nth-child(4) { text-align: center; }
+  .po-table td { padding: 7px 10px; border-bottom: 1px solid #eee; vertical-align: top; }
+  .po-table tr:last-child td { border-bottom: none; }
+  .po-table tr:nth-child(even) td { background: #fafafa; }
+  .po-services { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 4px; }
+  .po-services td { padding: 6px 10px; border-bottom: 1px solid #eee; }
+  .po-services tr:last-child td { border-bottom: none; }
+  .po-services td:last-child { text-align: right; font-weight: 500; }
+  .po-total-box { margin-top: 20px; border-top: 2px solid #8B0000; padding-top: 14px; display: flex; justify-content: flex-end; }
+  .po-total-inner { text-align: right; }
+  .po-total-label { font-size: 12px; color: #555; margin-bottom: 4px; }
+  .po-total-eur { font-size: 28px; font-weight: 700; color: #8B0000; line-height: 1; }
+  .po-total-lv { font-size: 16px; color: #555; margin-top: 3px; }
+  .po-note { margin-top: 24px; font-size: 11px; color: #777; line-height: 1.6; border-top: 1px solid #eee; padding-top: 12px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="header">
+    <div class="logo-line">Лотос 98 ООД</div>
+    <h1>Калкулатор за<br>комарници</h1>
+    <p class="subtitle">Цени с ДДС · Валидни от 06.04.2026 г.</p>
+    <button class="btn-help" id="btnHelp"><div class="btn-help-left"><div class="btn-help-icon">?</div><div><div class="btn-help-text">Как работи калкулаторът?</div><div class="btn-help-sub">Виж инструкцията за работа</div></div></div><span class="btn-help-arrow">&rarr;</span></button>
+  </div>
+
+  <!-- ФОРМА ЗА ДОБАВЯНЕ -->
+  <div class="card">
+    <div class="card-title">Добавяне на комарник</div>
+    <div class="form-grid">
+      <div class="field full">
+        <label for="tp">Вид комарник</label>
+        <div class="select-wrap">
+          <select id="tp">
+            <option value="static">Статичен комарник — от профил 25/17 мм</option>
+            <option value="window">Комарник на панти за прозорец — от профил 25/17 мм</option>
+            <option value="door">Комарник на панти за балконска врата — от профил 42/17 мм</option>
+            <option value="roller">Ролетен комарник</option>
+            <option value="plisse">Комарник едностранно плисе</option>
+            <option value="plisse2">Комарник двустранно плисе</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="w">Широчина (мм)</label>
+        <input type="number" id="w" placeholder="Широчина в мм." min="1">
+      </div>
+      <div class="field">
+        <label for="h">Височина (мм)</label>
+        <input type="number" id="h" placeholder="Височина в мм." min="1">
+      </div>
+      <div class="field">
+        <label for="ct">Цвят</label>
+        <div class="select-wrap">
+          <select id="ct">
+            <option value="white">Бял комарник</option>
+            <option value="color">Цветен комарник (+40%)</option>
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="qty">Брой (бр.)</label>
+        <input type="number" id="qty" value="1" min="1" max="999">
+      </div>
+
+      <!-- РАЗДЕЛИТЕЛ — показва се само за врата -->
+      <div class="door-divider" id="doorDivider">
+        <div class="door-divider-line"></div>
+        <div class="door-divider-label">Допълнителни опции за врата</div>
+        <div class="door-divider-line"></div>
+      </div>
+
+      <!-- ОПЦИЯ: КАСА -->
+      <div class="field door-option-field" id="fieldFrame" style="display:none;">
+        <label>Каса</label>
+        <label class="checkbox-field" id="lblFrame">
+          <input type="checkbox" id="chkFrame">
+          <div class="checkbox-box"></div>
+          <div class="checkbox-text">
+            <strong>С каса от профил 25/17 мм.</strong>
+            <small id="frameHint">+30 €</small>
+          </div>
+        </label>
+      </div>
+
+      <!-- ОПЦИЯ: НАПРЕГНАТИ ПАНТИ -->
+      <div class="field door-option-field" id="fieldHinges" style="display:none;">
+        <label>Панти</label>
+        <label class="checkbox-field" id="lblHinges">
+          <input type="checkbox" id="chkHinges">
+          <div class="checkbox-box"></div>
+          <div class="checkbox-text">
+            <strong>С напрегнати панти</strong>
+            <small>+20 €</small>
+          </div>
+        </label>
+      </div>
+
+    </div>
+    <div id="preview" class="preview"></div>
+    <button class="btn-add" id="btnAdd">+ Добави към поръчката</button>
+  </div>
+
+  <!-- КОШНИЦА -->
+  <div class="basket-card" id="basketCard">
+    <div class="card-title">Поръчка</div>
+    <div id="basketList">
+      <div class="basket-empty">Все още няма добавени комарници.</div>
+    </div>
+  </div>
+
+  <!-- ОПЦИИ ЗА ПОРЪЧКАТА -->
+  <div class="options-card" id="optionsCard">
+    <div class="card-title">Допълнителни услуги</div>
+    <div class="option-row">
+      <div class="option-label">
+        Монтаж
+        <small>+10 € за всеки комарник</small>
+      </div>
+      <div class="toggle-wrap">
+        <span class="toggle-price" id="montPrice">—</span>
+        <label class="toggle">
+          <input type="checkbox" id="chkMont">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
+    <div class="option-row">
+      <div class="option-label">
+        Доставка в гр. София
+        <small id="delivNote">+20 € еднократно</small>
+      </div>
+      <div class="toggle-wrap">
+        <span id="delivLocked" class="locked-note" style="display:none;">задължителна</span>
+        <span class="toggle-price" id="delivPrice">—</span>
+        <label class="toggle">
+          <input type="checkbox" id="chkDeliv">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
+    <div class="option-row">
+      <div class="option-label">
+        Вземане на размери и консултация в гр. София
+        <small>+20 € еднократно</small>
+      </div>
+      <div class="toggle-wrap">
+        <span class="toggle-price" id="measPrice">—</span>
+        <label class="toggle">
+          <input type="checkbox" id="chkMeas">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ОБЩА СУМА -->
+  <div class="total-card" id="totalCard" style="display:none;">
+    <div class="total-lines" id="totalLines"></div>
+    <hr class="total-divider">
+    <div class="total-main">
+      <div class="total-eur" id="totalEur">0 €</div>
+      <div class="total-lv" id="totalLv"></div>
+    </div>
+  </div>
+
+  <!-- БУТОН ПЕЧАТ -->
+  <button class="btn-print" id="btnPrint">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+      <rect x="6" y="14" width="12" height="8"></rect>
+    </svg>
+    Печат / Запази като PDF
+  </button>
+
+  <!-- СКРИТА ОФЕРТА ЗА ПЕЧАТ -->
+  <div id="printOffer"></div>
+
+  <div class="footer">
+    София 1421, ул. Резньовете №7, вх. В, ап. 29 · GSM: 0894 724 164<br>
+    с. Лозен 1151, ул. Райовец №13 · GSM: 0899 859 276 · <a id="ml"></a>
+  </div>
+</div>
+
+<!-- MODAL ИНСТРУКЦИЯ -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-header">
+      <div class="modal-title" id="modalTitle">Инструкция за работа</div>
+      <button class="modal-close" id="modalClose" aria-label="Затвори">×</button>
+    </div>
+    <div class="modal-body">
+
+      <div class="instr-step">
+        <div class="instr-num">1</div>
+        <div class="instr-content">
+          <div class="instr-title">Изберете вид комарник</div>
+          <div class="instr-text">От полето „Вид комарник" изберете желания тип — статичен, на панти за прозорец, на панти за балконска врата, ролетен, едностранно или двустранно плисе.</div>
+        </div>
+      </div>
+
+      <div class="instr-step">
+        <div class="instr-num">2</div>
+        <div class="instr-content">
+          <div class="instr-title">Въведете размерите</div>
+          <div class="instr-text">Въведете <strong>широчината</strong> и <strong>височината</strong> в милиметри. Ако размерите не съвпадат точно с таблична стойност, програмата автоматично закръглява нагоре и го отбелязва.</div>
+        </div>
+      </div>
+
+      <div class="instr-step">
+        <div class="instr-num">3</div>
+        <div class="instr-content">
+          <div class="instr-title">Изберете цвят и брой</div>
+          <div class="instr-text">Изберете <strong>бял</strong> или <strong>цветен</strong> комарник — цветният вариант е с 40% по-скъп. Въведете желания брой бройки.</div>
+        </div>
+      </div>
+
+      <div class="instr-step">
+        <div class="instr-num">4</div>
+        <div class="instr-content">
+          <div class="instr-title">Допълнителни опции за балконска врата</div>
+          <div class="instr-text">При избор на комарник за балконска врата се появяват две допълнителни полета.</div>
+          <div class="instr-box">
+            <div class="instr-box-title">С каса от профил 25/17 мм.</div>
+            <div class="instr-text" style="margin-bottom:10px;">При балконска врата с первaз от плочки от външната страна, комарникът на панти може да се монтира само ако касата излиза минимум <strong>20 мм</strong> от страната на пантите и минимум <strong>5 мм</strong> от страната на шнапера (дръжката).<br><br>Ако тези разстояния не са налице, има два варианта — да се премахне первазът, или да се изработи каса от профил 25/17 мм, върху която ляга крилото на комарника.<br><br>Добавя <strong>+30 €</strong> за бял или <strong>+42 €</strong> за цветен комарник.</div>
+            <img src="data:image/jpeg;base64,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" alt="Пример — первaз от плочки при балконска врата" style="width:100%;border-radius:8px;display:block;">
+          </div>
+          <div class="instr-box" style="margin-top:10px;">
+            <div class="instr-box-title">С напрегнати панти</div>
+            <div class="instr-text">Напрегнатите панти са панти с вградена пружина, която затваря комарника автоматично след всяко отваряне. Подходящи са само за комарници от профил <strong>42/17 мм</strong>.<br><br>Добавя <strong>+20 €</strong> независимо от цвета.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="instr-step">
+        <div class="instr-num">5</div>
+        <div class="instr-content">
+          <div class="instr-title">Добавете към поръчката</div>
+          <div class="instr-text">Натиснете <strong>„+ Добави към поръчката"</strong>. Можете да добавяте неограничен брой позиции. За да премахнете позиция, натиснете <strong>×</strong> до нея.</div>
+        </div>
+      </div>
+
+      <div class="instr-step">
+        <div class="instr-num">6</div>
+        <div class="instr-content">
+          <div class="instr-title">Допълнителни услуги</div>
+          <div class="instr-text">В секцията „Допълнителни услуги" можете да включите <strong>монтаж</strong> (+10 € за брой), <strong>доставка</strong> в гр. София (+20 €) и <strong>вземане на размери и консултация</strong> (+20 €). При избор на монтаж доставката се включва автоматично.</div>
+        </div>
+      </div>
+
+      <div class="instr-step">
+        <div class="instr-num">7</div>
+        <div class="instr-content">
+          <div class="instr-title">Печат и запазване като PDF</div>
+          <div class="instr-text">Натиснете <strong>„Печат / Запази като PDF"</strong> за да генерирате оферта с всички позиции, размери, цени и данни на фирмата. От диалога за печат можете да я отпечатате или да я запазите като PDF файл.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var el = document.getElementById('ml');
+  el.href = 'mailto:office@lotos98.eu';
+  el.textContent = 'office@lotos98.eu';
+})();
+
+/* ===================== ГЛОБАЛНА ПРЕМЕНЛИВА ЗА ПРОСЛЕДЯВАНЕ НА НАТИСКАНЕТО НА БУТОНА ===================== */
+var isButtonClicked = false;
+
+/* ===================== ЦЕНОВИ ДАННИ ===================== */
+
+var staticData = {
+  wSteps: [500,600,700,800,900,1000,1100,1200],
+  hSteps: [600,800,1000,1200,1400,1600,1800,2000,2200,2400],
+  table: {
+     600: [14,15,16,18,19,20,21,22],
+     800: [16,18,19,20,21,22,23,25],
+    1000: [18,20,21,22,24,25,26,27],
+    1200: [21,22,23,25,26,27,29,30],
+    1400: [26,28,30,31,34,35,38,39],
+    1600: [28,30,32,34,36,38,40,42],
+    1800: [31,32,35,36,39,40,43,44],
+    2000: [33,35,37,39,41,43,45,47],
+    2200: [35,38,39,41,44,45,48,50],
+    2400: [38,40,42,44,46,48,51,53]
+  }
+};
+
+var windowData = {
+  wSteps: [500,600,700,800,900,1000,1100,1200],
+  hSteps: [600,800,1000,1200,1400,1600,1800,2000,2200,2400],
+  table: {
+     600: [16,17,18,19,20,22,23,24],
+     800: [18,19,20,22,23,24,26,27],
+    1000: [20,22,23,24,26,27,28,30],
+    1200: [23,24,26,27,28,30,31,32],
+    1400: [28,30,32,34,36,38,39,41],
+    1600: [30,32,34,36,38,40,42,44],
+    1800: [32,35,36,39,41,43,45,47],
+    2000: [35,37,39,41,43,45,47,49],
+    2200: [38,39,41,44,45,48,50,52],
+    2400: [40,41,44,46,48,51,53,55]
+  }
+};
+
+var doorData = {
+  wSteps: [600,700,800,900,1000,1100,1200,1300],
+  hSteps: [1800,1900,2000,2100,2200,2300,2400,2500],
+  table: {
+    1800: [49,52,55,57,60,63,66,69],
+    1900: [51,54,57,60,62,65,68,71],
+    2000: [53,56,59,61,64,67,70,73],
+    2100: [55,57,60,63,66,69,72,74],
+    2200: [56,59,62,65,68,70,73,77],
+    2300: [58,61,64,66,70,73,76,78],
+    2400: [60,62,65,69,72,74,77,80],
+    2500: [61,64,68,70,73,76,79,82]
+  }
+};
+
+var rollerData = {
+  wSteps: [500,600,700,800,900,1000,1100,1200,1300,1400,1500],
+  hSteps: [600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000,2100,2200,2300,2400],
+  groups: [
+    { widths: [500,600,700,800], data: [
+      [39,42,45,49],[41,44,47,51],[43,46,49,53],[45,48,52,55],[47,51,54,57],
+      [49,52,56,59],[51,55,58,61],[53,57,60,64],[56,59,62,65],[58,61,64,68],
+      [60,63,66,70],[64,67,70,74],[65,69,73,76],[68,71,75,78],[70,73,77,81],
+      [72,76,79,83],[74,78,81,85],[76,80,84,87],[78,82,85,89]
+    ]},
+    { widths: [900,1000,1100,1200], data: [
+      [54,57,61,64],[56,59,63,66],[58,62,65,69],[60,64,67,71],[62,65,69,73],
+      [64,68,71,75],[66,70,73,77],[69,72,76,79],[71,74,78,82],[73,76,80,84],
+      [75,79,82,86],[79,83,86,90],[81,85,89,93],[83,87,91,95],[85,89,93,97],
+      [87,91,95,99],[89,93,97,101],[91,95,99,103],[93,97,101,105]
+    ]},
+    { widths: [1300,1400,1500], data: [
+      [65,69,72],[67,70,74],[69,73,76],[72,75,78],[74,77,80],
+      [76,79,82],[78,81,85],[80,84,87],[82,85,89],[84,87,91],
+      [86,90,93],[92,96,99],[94,98,102],[97,100,104],[99,102,106],
+      [101,105,108],[103,106,110],[105,109,112],[107,111,114]
+    ]}
+  ]
+};
+
+var plisseData = {
+  wSteps: [700,800,1000,1200,1400,1600,1800,2000,2200,2400],
+  hSteps: [600,800,1000,1200,1400,1600,1800,2000,2200,2400,2600],
+  table: {
+     600: [114,118,125,134,147,160,173,186,199,212],
+     800: [122,125,134,141,155,168,181,193,207,220],
+    1000: [129,134,141,149,162,174,188,202,214,228],
+    1200: [137,141,149,157,169,183,195,209,223,235],
+    1400: [144,149,157,164,178,190,204,216,230,243],
+    1600: [153,157,164,173,186,199,212,226,238,252],
+    1800: [161,164,173,181,193,207,220,233,247,259],
+    2000: [168,173,181,188,202,214,228,240,254,267],
+    2200: [177,181,188,195,209,223,235,248,261,274],
+    2400: [187,190,199,209,223,236,252,267,282,298],
+    2600: [199,204,214,228,243,259,276,294,313,332]
+  }
+};
+
+var plisse2Data = {
+  wSteps: [1200,1500,1800,2100,2400,2700,3000,3300,3600,4000],
+  hSteps: [1600,1700,1800,1900,2000,2100,2200,2300,2400,2500,2600],
+  table: {
+    1600: [233,258,284,316,355,397,449,499,558,636],
+    1700: [239,264,290,322,361,402,454,506,564,641],
+    1800: [244,269,295,327,366,407,460,511,569,647],
+    1900: [249,274,300,332,371,414,465,516,574,652],
+    2000: [255,280,306,337,376,419,470,522,579,657],
+    2100: [260,285,311,344,382,424,476,527,585,662],
+    2200: [265,291,316,349,387,429,481,532,590,668],
+    2300: [271,296,322,354,392,435,487,537,596,673],
+    2400: [276,301,327,360,398,440,492,543,601,678],
+    2500: [285,311,337,369,407,450,501,552,611,688],
+    2600: [290,315,342,373,412,454,506,557,615,692]
+  }
+};
+
+var TYPE_LABELS = {
+  static:  'Статичен комарник (25/17 мм)',
+  window:  'Комарник на панти за прозорец (25/17 мм)',
+  door:    'Комарник на панти за балконска врата (42/17 мм)',
+  roller:  'Ролетен комарник',
+  plisse:  'Комарник едностранно плисе',
+  plisse2: 'Комарник двустранно плисе'
+};
+
+/* ===================== ВИДИМОСТ НА ОПЦИИТЕ ЗА ВРАТА ===================== */
+
+function updateFrameHint() {
+  var hint = document.getElementById('frameHint');
+  if (!hint) return;
+  var isColor = document.getElementById('ct').value === 'color';
+  hint.textContent = isColor ? '+42 €' : '+30 €';
+}
+
+function updateDoorOptions() {
+  var isDoor = document.getElementById('tp').value === 'door';
+  var fieldFrame = document.getElementById('fieldFrame');
+  var fieldHinges = document.getElementById('fieldHinges');
+  var divider = document.getElementById('doorDivider');
+
+  fieldFrame.style.display = isDoor ? '' : 'none';
+  fieldHinges.style.display = isDoor ? '' : 'none';
+  divider.style.display = isDoor ? 'flex' : 'none';
+
+  if (!isDoor) {
+    document.getElementById('chkFrame').checked = false;
+    document.getElementById('chkHinges').checked = false;
+  }
+}
+
+/* ===================== ИЗЧИСЛЯВАНЕ ===================== */
+
+function roundUp(val, steps) {
+  for (var i = 0; i < steps.length; i++) { if (val <= steps[i]) return steps[i]; }
+  return null;
+}
+
+function getBasePrice(tp, wv, hv) {
+  if (tp === 'static' || tp === 'window') {
+    var d = tp === 'static' ? staticData : windowData;
+    var rw = roundUp(wv, d.wSteps);
+    var rh = roundUp(hv, d.hSteps);
+    if (!rw) return { err: 'Широчината трябва да е между ' + d.wSteps[0] + ' и ' + d.wSteps[d.wSteps.length-1] + ' мм.' };
+    if (!rh) return { err: 'Височината трябва да е между ' + d.hSteps[0] + ' и ' + d.hSteps[d.hSteps.length-1] + ' мм.' };
+    var row = d.table[rh];
+    if (!row) return { err: 'Размерите са извън обхвата на ценовата таблица.' };
+    return { price: row[d.wSteps.indexOf(rw)], rw: rw, rh: rh };
+  }
+  if (tp === 'door') {
+    var d = doorData;
+    var rw = roundUp(wv, d.wSteps);
+    var rh = roundUp(hv, d.hSteps);
+    if (!rw) return { err: 'Широчината трябва да е между ' + d.wSteps[0] + ' и ' + d.wSteps[d.wSteps.length-1] + ' мм.' };
+    if (!rh) return { err: 'Височината трябва да е между ' + d.hSteps[0] + ' и ' + d.hSteps[d.hSteps.length-1] + ' мм.' };
+    var row = d.table[rh];
+    if (!row) return { err: 'Размерите са извън обхвата на ценовата таблица.' };
+    return { price: row[d.wSteps.indexOf(rw)], rw: rw, rh: rh };
+  }
+  if (tp === 'roller') {
+    var rw = roundUp(wv, rollerData.wSteps);
+    var rh = roundUp(hv, rollerData.hSteps);
+    if (!rw) return { err: 'Широчината трябва да е между 500 и 1500 мм.' };
+    if (!rh) return { err: 'Височината трябва да е между 600 и 2400 мм.' };
+    var group = null, colIdx = -1;
+    for (var i = 0; i < rollerData.groups.length; i++) {
+      var ci = rollerData.groups[i].widths.indexOf(rw);
+      if (ci !== -1) { group = rollerData.groups[i]; colIdx = ci; break; }
+    }
+    var rowIdx = rollerData.hSteps.indexOf(rh);
+    if (!group || colIdx === -1 || rowIdx === -1) return { err: 'Размерите са извън обхвата на ценовата таблица.' };
+    return { price: group.data[rowIdx][colIdx], rw: rw, rh: rh };
+  }
+  if (tp === 'plisse') {
+    var d = plisseData;
+    var rw = roundUp(wv, d.wSteps);
+    var rh = roundUp(hv, d.hSteps);
+    if (!rw) return { err: 'Широчината трябва да е между 700 и 2400 мм.' };
+    if (!rh) return { err: 'Височината трябва да е между 600 и 2600 мм.' };
+    var row = d.table[rh];
+    if (!row) return { err: 'Размерите са извън обхвата на ценовата таблица.' };
+    return { price: row[d.wSteps.indexOf(rw)], rw: rw, rh: rh };
+  }
+  if (tp === 'plisse2') {
+    var d = plisse2Data;
+    var rw = roundUp(wv, d.wSteps);
+    var rh = roundUp(hv, d.hSteps);
+    if (!rw) return { err: 'Широчината трябва да е между 1200 и 4000 мм.' };
+    if (!rh) return { err: 'Височината трябва да е между 1600 и 2600 мм.' };
+    var row = d.table[rh];
+    if (!row) return { err: 'Размерите са извън обхвата на ценовата таблица.' };
+    return { price: row[d.wSteps.indexOf(rw)], rw: rw, rh: rh };
+  }
+  return { err: 'Непознат вид комарник.' };
+}
+
+/* ===================== КОШНИЦА ===================== */
+
+var basket = [];
+
+function fmtLv(eur) {
+  return (eur * 1.95583).toFixed(2).replace('.', ',') + ' лв.';
+}
+
+function updatePreview() {
+  var tp = document.getElementById('tp').value;
+  var wv = parseInt(document.getElementById('w').value);
+  var hv = parseInt(document.getElementById('h').value);
+  var isColor = document.getElementById('ct').value === 'color';
+  var qty = Math.max(1, parseInt(document.getElementById('qty').value) || 1);
+  var hasFrame = tp === 'door' && document.getElementById('chkFrame').checked;
+  var hasHinges = tp === 'door' && document.getElementById('chkHinges').checked;
+  var prev = document.getElementById('preview');
+
+  if (!wv || !hv || isNaN(wv) || isNaN(hv)) { prev.innerHTML = ''; return; }
+
+  var res = getBasePrice(tp, wv, hv);
+  if (res.err) {
+    prev.innerHTML = '<div class="err-msg">' + res.err + '</div>';
+    return;
+  }
+
+  var eurUnit = res.price;
+  if (isColor) eurUnit = Math.round(eurUnit * 1.4);
+
+  // Добавки за опции на врата
+  if (hasFrame) {
+    var frameAdd = isColor ? Math.round(30 * 1.4) : 30;
+    eurUnit += frameAdd;
+  }
+  if (hasHinges) {
+    eurUnit += 20;
+  }
+
+  var eurTotal = eurUnit * qty;
+
+  var wTag = (wv !== res.rw) ? ' <span class="tag">↑ ' + res.rw + '</span>' : '';
+  var hTag = (hv !== res.rh) ? ' <span class="tag">↑ ' + res.rh + '</span>' : '';
+  var qtyNote = qty > 1 ? qty + ' бр. × ' + eurUnit + ' € = ' : '';
+
+  // Описание на добавките
+  var extrasNote = '';
+  if (hasFrame || hasHinges) {
+    var parts = [];
+    if (hasFrame) parts.push('каса ' + (isColor ? Math.round(30*1.4) : 30) + ' €');
+    if (hasHinges) parts.push('напрегнати панти 20 €');
+    extrasNote = '<div style="font-size:11px;color:var(--red);margin-top:3px;">+ ' + parts.join(' · ') + '</div>';
+  }
+
+  prev.innerHTML =
+    '<div class="preview-price">' +
+    '<div class="price-info" style="flex:1">' +
+    '<div style="font-size:12px;color:var(--muted);margin-bottom:2px;">' + wv + wTag + ' × ' + hv + hTag + ' мм' + (isColor ? ' · цветен' : '') + '</div>' +
+    extrasNote +
+    '<div style="font-size:12px;color:var(--muted);margin-top:2px;">' + qtyNote + '</div>' +
+    '</div>' +
+    '<div class="preview-eur">' + eurTotal + ' €</div>' +
+    '<div class="preview-lv">' + fmtLv(eurTotal) + '</div>' +
+    '</div>';
+}
+
+function addToBasket() {
+  var tp = document.getElementById('tp').value;
+  var wv = parseInt(document.getElementById('w').value);
+  var hv = parseInt(document.getElementById('h').value);
+  var isColor = document.getElementById('ct').value === 'color';
+  var qty = Math.max(1, parseInt(document.getElementById('qty').value) || 1);
+  var hasFrame = tp === 'door' && document.getElementById('chkFrame').checked;
+  var hasHinges = tp === 'door' && document.getElementById('chkHinges').checked;
+
+  if (!wv || !hv || isNaN(wv) || isNaN(hv)) {
+    alert('Моля, въведете широчина и височина.');
+    return;
+  }
+
+  var res = getBasePrice(tp, wv, hv);
+  if (res.err) {
+    alert(res.err);
+    return;
+  }
+
+  var unitPrice = res.price;
+  if (isColor) unitPrice = Math.round(unitPrice * 1.4);
+
+  var frameAdd = 0;
+  var hingesAdd = 0;
+
+  if (hasFrame) {
+    frameAdd = isColor ? Math.round(30 * 1.4) : 30;
+    unitPrice += frameAdd;
+  }
+  if (hasHinges) {
+    hingesAdd = 20;
+    unitPrice += hingesAdd;
+  }
+
+  basket.push({
+    tp: tp,
+    label: TYPE_LABELS[tp],
+    wInput: wv, hInput: hv,
+    rw: res.rw, rh: res.rh,
+    isColor: isColor,
+    qty: qty,
+    unitPrice: unitPrice,
+    price: unitPrice * qty,
+    hasFrame: hasFrame,
+    frameAdd: frameAdd,
+    hasHinges: hasHinges,
+    hingesAdd: hingesAdd
+  });
+
+  document.getElementById('w').value = '';
+  document.getElementById('h').value = '';
+  document.getElementById('qty').value = '1';
+  document.getElementById('preview').innerHTML = '';
+  document.getElementById('chkFrame').checked = false;
+  document.getElementById('chkHinges').checked = false;
+
+  renderBasket();
+  renderTotal();
+
+  if (!isButtonClicked) {
+    var analyticsEvent = {
+      event_category: 'Interaction',
+      event_label: 'Add to Basket',
+      value: 1,
+      currency: 'EUR',
+      items: [{ item_name: 'Калкулатор комарници' }],
+      send_to: 'G-Y4XJZD7Q0M'
+    };
+
+    if (typeof gtag === 'function') {
+      gtag('event', 'calculator_add_to_cart', analyticsEvent);
+    }
+    if (window.dataLayer && Array.isArray(window.dataLayer)) {
+      window.dataLayer.push(Object.assign({ event: 'calculator_add_to_cart' }, analyticsEvent));
+    }
+
+    isButtonClicked = true;
+  }
+}
+
+function removeFromBasket(idx) {
+  basket.splice(idx, 1);
+  renderBasket();
+  renderTotal();
+}
+
+function renderBasket() {
+  var list = document.getElementById('basketList');
+  if (basket.length === 0) {
+    list.innerHTML = '<div class="basket-empty">Все още няма добавени комарници.</div>';
+    return;
+  }
+  var html = '';
+  for (var i = 0; i < basket.length; i++) {
+    var item = basket[i];
+    var wTag = (item.wInput !== item.rw) ? ' <span class="tag">↑ ' + item.rw + '</span>' : '';
+    var hTag = (item.hInput !== item.rh) ? ' <span class="tag">↑ ' + item.rh + '</span>' : '';
+    var qtyLine = item.qty > 1
+      ? '<div style="font-size:11px;color:var(--muted);margin-top:2px;">' + item.qty + ' бр. × ' + item.unitPrice + ' €</div>'
+      : '';
+    var extrasLine = '';
+    if (item.hasFrame || item.hasHinges) {
+      var extParts = [];
+      if (item.hasFrame) extParts.push('каса +' + item.frameAdd + ' €');
+      if (item.hasHinges) extParts.push('напрегнати панти +20 €');
+      extrasLine = '<div style="font-size:11px;color:var(--red);margin-top:2px;">+ ' + extParts.join(' · ') + '</div>';
+    }
+    html +=
+      '<div class="basket-item">' +
+      '<div class="basket-num">' + (i+1) + '</div>' +
+      '<div class="basket-info">' +
+      '<div class="basket-type">' + item.label + '</div>' +
+      '<div class="basket-dims">' +
+      (item.qty > 1 ? '<strong style="color:var(--text)">' + item.qty + ' бр.</strong> · ' : '') +
+      item.wInput + wTag + ' × ' + item.hInput + hTag + ' мм' +
+      (item.isColor ? ' · <span style="color:var(--red)">цветен</span>' : ' · бял') +
+      '</div>' +
+      extrasLine +
+      (item.qty > 1 ? qtyLine : '') +
+      '</div>' +
+      '<div style="text-align:right;">' +
+      '<div class="basket-price">' + item.price + ' €</div>' +
+      '<div class="basket-price-lv">' + fmtLv(item.price) + '</div>' +
+      '</div>' +
+      '<button class="btn-remove" onclick="removeFromBasket(' + i + ')">×</button>' +
+      '</div>';
+  }
+  list.innerHTML = html;
+}
+
+/* ===================== ОПЦИИ И ОБЩА СУМА ===================== */
+
+function renderTotal() {
+  var hasMont = document.getElementById('chkMont').checked;
+  var hasDeliv = document.getElementById('chkDeliv').checked;
+  var hasMeas = document.getElementById('chkMeas').checked;
+  var totalCard = document.getElementById('totalCard');
+
+  if (basket.length === 0) {
+    totalCard.style.display = 'none';
+    document.getElementById('montPrice').textContent = '—';
+    document.getElementById('delivPrice').textContent = '—';
+    document.getElementById('measPrice').textContent = '—';
+    return;
+  }
+
+  var sumItems = 0;
+  var totalPieces = 0;
+  for (var i = 0; i < basket.length; i++) {
+    sumItems += basket[i].price;
+    totalPieces += basket[i].qty;
+  }
+
+  var montTotal = hasMont ? totalPieces * 10 : 0;
+  var delivTotal = hasDeliv ? 20 : 0;
+  var measTotal = hasMeas ? 20 : 0;
+  var grand = sumItems + montTotal + delivTotal + measTotal;
+
+  document.getElementById('montPrice').textContent = hasMont ? (montTotal + ' €') : '—';
+  document.getElementById('delivPrice').textContent = hasDeliv ? '20 €' : '—';
+  document.getElementById('measPrice').textContent = hasMeas ? '20 €' : '—';
+
+  var lines = '';
+  lines += '<div class="total-line"><span>Комарници (' + totalPieces + ' бр.)</span><span>' + sumItems + ' €</span></div>';
+  if (hasMont) lines += '<div class="total-line"><span>Монтаж (' + totalPieces + ' × 10 €)</span><span>' + montTotal + ' €</span></div>';
+  if (hasDeliv) lines += '<div class="total-line"><span>Доставка</span><span>20 €</span></div>';
+  if (hasMeas) lines += '<div class="total-line"><span>Вземане на размери</span><span>20 €</span></div>';
+
+  document.getElementById('totalLines').innerHTML = lines;
+  document.getElementById('totalEur').textContent = grand + ' €';
+  document.getElementById('totalLv').textContent = '(' + fmtLv(grand) + ')';
+  totalCard.style.display = 'block';
+}
+
+/* Логика: монтаж → задължителна доставка */
+document.getElementById('chkMont').addEventListener('change', function() {
+  var chkDeliv = document.getElementById('chkDeliv');
+  var locked = document.getElementById('delivLocked');
+  if (this.checked) {
+    chkDeliv.checked = true;
+    chkDeliv.disabled = true;
+    locked.style.display = 'inline';
+    document.getElementById('delivPrice').textContent = '20 €';
+  } else {
+    chkDeliv.disabled = false;
+    locked.style.display = 'none';
+  }
+  renderTotal();
+});
+
+document.getElementById('chkDeliv').addEventListener('change', renderTotal);
+document.getElementById('chkMeas').addEventListener('change', renderTotal);
+
+/* ===================== ПЕЧАТ / PDF ===================== */
+
+document.getElementById('btnPrint').addEventListener('click', function() {
+  if (basket.length === 0) {
+    alert('Моля, добавете поне един комарник преди да генерирате оферта.');
+    return;
+  }
+
+  var hasMont = document.getElementById('chkMont').checked;
+  var hasDeliv = document.getElementById('chkDeliv').checked;
+  var hasMeas = document.getElementById('chkMeas').checked;
+
+  var sumItems = 0, totalPieces = 0;
+  for (var i = 0; i < basket.length; i++) { sumItems += basket[i].price; totalPieces += basket[i].qty; }
+  var montTotal = hasMont ? totalPieces * 10 : 0;
+  var delivTotal = hasDeliv ? 20 : 0;
+  var measTotal = hasMeas ? 20 : 0;
+  var grand = sumItems + montTotal + delivTotal + measTotal;
+
+  var tableRows = '';
+  for (var i = 0; i < basket.length; i++) {
+    var item = basket[i];
+    var wRound = item.wInput !== item.rw ? '<br><span style="color:#888;font-size:11px;">табл. ' + item.rw + ' мм</span>' : '';
+    var hRound = item.hInput !== item.rh ? '<br><span style="color:#888;font-size:11px;">табл. ' + item.rh + ' мм</span>' : '';
+    var bg = i % 2 === 1 ? 'background:#fafafa;' : '';
+    var extrasCell = '';
+    if (item.hasFrame || item.hasHinges) {
+      var extParts = [];
+      if (item.hasFrame) extParts.push('Каса +' + item.frameAdd + ' €');
+      if (item.hasHinges) extParts.push('Напрегнати панти +20 €');
+      extrasCell = '<br><span style="color:#8B0000;font-size:11px;">' + extParts.join(' · ') + '</span>';
+    }
+    tableRows +=
+      '<tr style="' + bg + '">' +
+      '<td style="padding:8px 10px;border-bottom:1px solid #eee;font-size:12px;">' + item.label + extrasCell +
+      '<br><span style="color:#888;font-size:11px;">' + (item.isColor ? 'Цветен' : 'Бял') + '</span></td>' +
+      '<td style="padding:8px 10px;border-bottom:1px solid #eee;font-size:12px;text-align:center;">' + item.wInput + wRound + '</td>' +
+      '<td style="padding:8px 10px;border-bottom:1px solid #eee;font-size:12px;text-align:center;">' + item.hInput + hRound + '</td>' +
+      '<td style="padding:8px 10px;border-bottom:1px solid #eee;font-size:12px;text-align:center;">' + item.qty + '</td>' +
+      '<td style="padding:8px 10px;border-bottom:1px solid #eee;font-size:12px;text-align:right;">' + item.unitPrice + ' €</td>' +
+      '<td style="padding:8px 10px;border-bottom:1px solid #eee;font-size:12px;text-align:right;font-weight:600;">' + item.price + ' €<br><span style="color:#888;font-size:11px;font-weight:400;">' + fmtLv(item.price) + '</span></td>' +
+      '</tr>';
+  }
+
+  var servicesRows = '';
+  if (hasMont) servicesRows += '<tr><td style="padding:6px 10px;border-bottom:1px solid #eee;font-size:12px;">Монтаж (' + totalPieces + ' бр. × 10 €)</td><td style="padding:6px 10px;border-bottom:1px solid #eee;font-size:12px;text-align:right;font-weight:600;">' + montTotal + ' €</td></tr>';
+  if (hasDeliv) servicesRows += '<tr><td style="padding:6px 10px;border-bottom:1px solid #eee;font-size:12px;">Доставка в гр. София</td><td style="padding:6px 10px;border-bottom:1px solid #eee;font-size:12px;text-align:right;font-weight:600;">20 €</td></tr>';
+  if (hasMeas) servicesRows += '<tr style=""><td style="padding:6px 10px;font-size:12px;">Вземане на размери и консултация в гр. София</td><td style="padding:6px 10px;font-size:12px;text-align:right;font-weight:600;">20 €</td></tr>';
+
+  var servicesSection = '';
+  if (servicesRows) {
+    servicesSection =
+      '<p style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#8B0000;margin:20px 0 8px;">Допълнителни услуги</p>' +
+      '<table style="width:100%;border-collapse:collapse;border:1px solid #eee;"><tbody>' + servicesRows + '</tbody></table>';
+  }
+
+  var d = new Date();
+  var dd = String(d.getDate()).padStart(2,'0');
+  var mm = String(d.getMonth()+1).padStart(2,'0');
+  var yyyy = d.getFullYear();
+  var hh = String(d.getHours()).padStart(2,'0');
+  var min = String(d.getMinutes()).padStart(2,'0');
+  var dateStr = dd + '.' + mm + '.' + yyyy + ' г.';
+  var timeStr = hh + ':' + min + ' ч.';
+  var fileDate = dd + '-' + mm + '-' + yyyy + '_' + hh + '-' + min;
+
+  var fullHTML = '<!DOCTYPE html><html lang="bg"><head><meta charset="UTF-8">' +
+    '<title>Оферта_Лотос98_' + fileDate + '</title>' +
+    '<style>' +
+    '@page { margin: 14mm 16mm; size: A4; }' +
+    'body { font-family: Arial, sans-serif; font-size: 13px; color: #1a1a1a; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }' +
+    '* { box-sizing: border-box; }' +
+    '</style></head><body>' +
+    '<table style="width:100%;border-collapse:collapse;border-bottom:2px solid #8B0000;padding-bottom:14px;margin-bottom:20px;">' +
+    '<tr><td style="vertical-align:top;padding-bottom:14px;">' +
+    '<div style="font-size:22px;font-weight:700;color:#8B0000;letter-spacing:0.05em;margin-bottom:5px;">Лотос 98 ООД</div>' +
+    '<div style="font-size:11px;color:#555;line-height:1.7;">' +
+    'София 1421, ул. Резньовете №7, вх. В, ап. 29<br>' +
+    'с. Лозен 1151, ул. Райовец №13<br>' +
+    'GSM: 0894 724 164 · 0899 859 276<br>' +
+    'office@lotos98.eu' +
+    '</div>' +
+    '</td>' +
+    '<td style="vertical-align:top;text-align:right;padding-bottom:14px;">' +
+    '<div style="font-size:24px;font-weight:700;color:#1a1a1a;margin-bottom:5px;">Ценова оферта</div>' +
+    '<div style="font-size:12px;color:#555;">Дата: ' + dateStr + ' · ' + timeStr + '</div>' +
+    '<div style="font-size:11px;color:#8B0000;margin-top:4px;">Цени с ДДС · Валидни от 06.04.2026 г.</div>' +
+    '</td></tr></table>' +
+    '<p style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#8B0000;margin:0 0 8px;">Комарници</p>' +
+    '<table style="width:100%;border-collapse:collapse;border:1px solid #eee;">' +
+    '<thead><tr style="background:#8B0000;">' +
+    '<th style="padding:8px 10px;text-align:left;font-size:11px;color:#fff;font-weight:500;">Вид комарник</th>' +
+    '<th style="padding:8px 10px;text-align:center;font-size:11px;color:#fff;font-weight:500;">Широчина (мм)</th>' +
+    '<th style="padding:8px 10px;text-align:center;font-size:11px;color:#fff;font-weight:500;">Височина (мм)</th>' +
+    '<th style="padding:8px 10px;text-align:center;font-size:11px;color:#fff;font-weight:500;">Брой</th>' +
+    '<th style="padding:8px 10px;text-align:right;font-size:11px;color:#fff;font-weight:500;">Ед. цена</th>' +
+    '<th style="padding:8px 10px;text-align:right;font-size:11px;color:#fff;font-weight:500;">Сума</th>' +
+    '</tr></thead><tbody>' + tableRows + '</tbody></table>' +
+    servicesSection +
+    '<div style="margin-top:20px;border-top:2px solid #8B0000;padding-top:14px;text-align:right;">' +
+    '<div style="font-size:12px;color:#555;margin-bottom:4px;">Обща сума (' + totalPieces + ' бр. комарници)</div>' +
+    '<div style="font-size:32px;font-weight:700;color:#8B0000;line-height:1;">' + grand + ' €</div>' +
+    '<div style="font-size:16px;color:#555;margin-top:4px;">' + fmtLv(grand) + '</div>' +
+    '</div>' +
+    '<div style="margin-top:24px;font-size:11px;color:#777;line-height:1.6;border-top:1px solid #eee;padding-top:12px;">' +
+    'Забележка: При закръгляне на размерите нагоре стойностите „табл." показват таблично закръгления размер, по който е определена цената. ' +
+    'Цените са с включен ДДС. Офертата е изготвена на ' + dateStr + ' в ' + timeStr + '.' +
+    '</div>' +
+    '</body></html>';
+
+  var w = window.open('', '_blank', 'width=794,height=1123');
+  w.document.write(fullHTML);
+  w.document.close();
+  w.focus();
+  setTimeout(function() { w.print(); }, 500);
+});
+
+/* ===================== СЛУШАТЕЛИ ===================== */
+
+document.getElementById('tp').addEventListener('change', function() {
+  updateDoorOptions();
+  updatePreview();
+});
+document.getElementById('w').addEventListener('input', updatePreview);
+document.getElementById('h').addEventListener('input', updatePreview);
+document.getElementById('ct').addEventListener('change', function() {
+  updateFrameHint();
+  updatePreview();
+});
+document.getElementById('qty').addEventListener('input', updatePreview);
+document.getElementById('btnAdd').addEventListener('click', addToBasket);
+document.getElementById('chkFrame').addEventListener('change', updatePreview);
+document.getElementById('chkHinges').addEventListener('change', updatePreview);
+
+// Инициализация
+updateDoorOptions();
+updateFrameHint();
+
+/* ===================== MODAL ИНСТРУКЦИЯ ===================== */
+var overlay = document.getElementById('modalOverlay');
+document.getElementById('btnHelp').addEventListener('click', function() {
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+function closeModal() {
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('modalClose').addEventListener('click', closeModal);
+overlay.addEventListener('click', function(e) {
+  if (e.target === overlay) closeModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+</script>
+</body>
+</html>

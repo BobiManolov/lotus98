@@ -1,0 +1,30 @@
+Adjust the visibility of the background image in the "За нас" hero section.
+
+Goal:
+Make the background image more visible by approximately 30%.
+
+Changes:
+
+1. Reduce overlay opacity:
+
+* Decrease the white/overlay opacity by around 30%
+* Let more of the image show through
+
+2. Increase image clarity:
+
+* Slightly increase contrast or brightness if needed
+* Ensure the image is clearly visible, not washed out
+
+3. Maintain readability:
+
+* Keep text ("За нас" and subtitle) readable
+* If needed, use a subtle gradient instead of a heavy white overlay
+
+4. Do NOT:
+
+* Make the image too dark or overpowering
+* Reduce text contrast
+* Change layout or spacing
+
+Goal:
+A clearly visible but still subtle background image (~30% more visible than current).

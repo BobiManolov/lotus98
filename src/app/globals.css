@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+:root {
+  --site-header-h: 4rem;
+  --background: #f8fafb;
+  --foreground: #0f172a;
+  --brand-900: #143e4a;
+  --brand-800: #1e5566;
+  --brand-700: #255562;
+  --brand-600: #2f6f84;
+  --accent: #0ea2c9;
+  --accent-dark: #0b7a99;
+  --muted: #64748b;
+  --card: #ffffff;
+  --ring: #0ea2c9;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand-900: var(--brand-900);
+  --color-brand-800: var(--brand-800);
+  --color-brand-700: var(--brand-700);
+  --color-brand-600: var(--brand-600);
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --font-sans: var(--font-manrope);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-manrope), system-ui, sans-serif;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --site-header-h: 4.125rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --site-header-h: 4.375rem;
+  }
+}
+
+::selection {
+  background: color-mix(in oklab, var(--accent) 35%, transparent);
+}
+
+/* Home hero: subtle entrance (respect reduced motion) */
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-animate {
+    animation: hero-fade-up 0.65s ease-out both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-animate {
+    opacity: 1;
+  }
+}
+
+@keyframes services-step-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .services-step-animate {
+    animation: services-step-in 0.5s ease-out both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-step-animate {
+    opacity: 1;
+  }
+}

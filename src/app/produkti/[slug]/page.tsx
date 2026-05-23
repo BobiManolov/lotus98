@@ -95,12 +95,12 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 вътрешни преграждания и специализирани решения според конкретното приложение.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a
-                  href={EXTERNAL.prices}
+                <Link
+                  href="/prices/al-dograma"
                   className="inline-flex items-center justify-center rounded-full bg-brand-800 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
                 >
                   Цени
-                </a>
+                </Link>
                 <Link
                   href="/kontakti"
                   className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 transition-colors hover:border-brand-800 hover:text-brand-800"
@@ -287,12 +287,12 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 Профилите с термомост са по-скъпи, но са правилният избор за външна дограма. Студените профили са
                 по-достъпни и подходящи за вътрешни решения.
               </p>
-              <a
-                href={EXTERNAL.prices}
+              <Link
+                href="/prices/al-dograma"
                 className="mt-6 inline-flex items-center justify-center rounded-full bg-brand-800 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
               >
                 Цени
-              </a>
+              </Link>
             </article>
 
             <section className="relative overflow-hidden rounded-3xl border border-slate-200/90 bg-white p-6 shadow-sm ring-1 ring-slate-900/[0.03] sm:p-8">
@@ -407,12 +407,12 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 всички сезони.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a
-                  href={EXTERNAL.prices}
+                <Link
+                  href="/prices/staklopaketi"
                   className="inline-flex items-center justify-center rounded-full bg-brand-800 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
                 >
                   Цени
-                </a>
+                </Link>
                 <Link
                   href="/kontakti"
                   className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 transition-colors hover:border-brand-800 hover:text-brand-800"
@@ -648,12 +648,12 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                   >
                     Запитване за оферта
                   </Link>
-                  <a
-                    href={EXTERNAL.prices}
+                  <Link
+                    href="/prices/staklopaketi"
                     className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 transition-colors hover:border-brand-800 hover:text-brand-800"
                   >
                     Цени
-                  </a>
+                  </Link>
                 </div>
               </div>
             </section>
@@ -707,14 +707,14 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 нуждите на всеки дом.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-3">
-                <a
-                  href={EXTERNAL.prices}
+                <Link
+                  href="/prices/komarnici"
                   className="inline-flex items-center justify-center rounded-full bg-brand-800 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
                 >
                   Цени
-                </a>
+                </Link>
                 <Link
-                  href="/kalkulator-komarnitsi"
+                  href="/prices/komarnici#kalkulator"
                   className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 transition-colors hover:border-brand-800 hover:text-brand-800"
                 >
                   Калкулатор за комарници
@@ -816,7 +816,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 </p>
                 <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:justify-start">
                   <Link
-                    href="/kalkulator-komarnitsi"
+                    href="/prices/komarnici#kalkulator"
                     className="inline-flex items-center justify-center rounded-full bg-brand-800 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
                   >
                     Изчисли цена
@@ -917,12 +917,12 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                   >
                     Запитване за оферта
                   </Link>
-                  <a
-                    href={EXTERNAL.prices}
+                  <Link
+                    href="/prices/komarnici"
                     className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 transition-colors hover:border-brand-800 hover:text-brand-800"
                   >
                     Цени
-                  </a>
+                  </Link>
                 </div>
               </div>
             </section>
@@ -961,12 +961,12 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 позволяват лесно регулиране на осветеността и създават комфортна атмосфера във всеки дом или офис.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a
-                  href={EXTERNAL.prices}
+                <Link
+                  href="/prices/shtori"
                   className="inline-flex items-center justify-center rounded-full bg-brand-800 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
                 >
                   Цени
-                </a>
+                </Link>
                 <Link
                   href="/kontakti"
                   className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 transition-colors hover:border-brand-800 hover:text-brand-800"
@@ -1110,12 +1110,12 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                   >
                     Запитване за оферта
                   </Link>
-                  <a
-                    href={EXTERNAL.prices}
+                  <Link
+                    href="/prices/shtori"
                     className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 transition-colors hover:border-brand-800 hover:text-brand-800"
                   >
                     Цени
-                  </a>
+                  </Link>
                 </div>
               </div>
             </section>
@@ -1145,12 +1145,12 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 и естетическа функция - предпазват стените, отвеждат водата и допринасят за завършения вид на отвора.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a
-                  href={EXTERNAL.prices}
+                <Link
+                  href="/prices/pervazi"
                   className="inline-flex items-center justify-center rounded-full bg-brand-800 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
                 >
                   Цени
-                </a>
+                </Link>
                 <Link
                   href="/kontakti"
                   className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 transition-colors hover:border-brand-800 hover:text-brand-800"
@@ -1358,12 +1358,12 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                   >
                     Запитване за оферта
                   </Link>
-                  <a
-                    href={EXTERNAL.prices}
+                  <Link
+                    href="/prices/pervazi"
                     className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 transition-colors hover:border-brand-800 hover:text-brand-800"
                   >
                     Цени
-                  </a>
+                  </Link>
                 </div>
               </div>
             </section>
@@ -1397,18 +1397,18 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               всеки проект.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a
-                href={EXTERNAL.prices}
+              <Link
+                href="/prices/pvc-dograma"
                 className="inline-flex items-center justify-center rounded-full bg-brand-800 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
               >
                 Цени
-              </a>
-              <a
-                href={EXTERNAL.pvcCalculator}
+              </Link>
+              <Link
+                href="/pvc-kalkulator"
                 className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 transition-colors hover:border-brand-800 hover:text-brand-800"
               >
                 PVC калкулатор
-              </a>
+              </Link>
             </div>
             <Link href="/kontakti" className="mt-5 inline-flex text-sm font-semibold text-accent transition-colors hover:underline">
               Запитване за оферта →
@@ -1634,18 +1634,18 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               >
                 Запитване за оферта
               </Link>
-              <a
-                href={EXTERNAL.prices}
+              <Link
+                href="/prices/pvc-dograma"
                 className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 transition-colors hover:border-brand-800 hover:text-brand-800"
               >
                 Цени
-              </a>
-              <a
-                href={EXTERNAL.pvcCalculator}
+              </Link>
+              <Link
+                href="/pvc-kalkulator"
                 className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-800 transition-colors hover:border-brand-800 hover:text-brand-800"
               >
                 PVC калкулатор
-              </a>
+              </Link>
             </div>
             </div>
           </section>

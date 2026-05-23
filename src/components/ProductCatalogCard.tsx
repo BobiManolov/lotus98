@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { EXTERNAL } from "@/content/site";
 import { PRODUCT_CATEGORY_IMAGE_FALLBACK, PRODUCT_CATEGORY_IMAGES } from "@/content/productCategoryImages";
 
 export type ProductCatalogCardData = {
@@ -16,13 +15,16 @@ const easePremium = "[transition-timing-function:cubic-bezier(0.22,1,0.36,1)]";
 /**
  * Продуктова карта за страницата „Продукти“ — премиум визуал и hover, долен текст върху снимката.
  */
+const PRICES_SLUG_MAP: Record<string, string> = { komarnitsi: "komarnici" };
+
 export function ProductCatalogCard({ item }: { item: ProductCatalogCardData }) {
   const src = PRODUCT_CATEGORY_IMAGES[item.slug] ?? PRODUCT_CATEGORY_IMAGE_FALLBACK;
+  const pricesHref = `/prices/${PRICES_SLUG_MAP[item.slug] ?? item.slug}`;
   const calculatorHref =
     item.slug === "pvc-dograma"
-      ? EXTERNAL.pvcCalculator
+      ? "/pvc-kalkulator"
       : item.slug === "komarnitsi"
-        ? EXTERNAL.prices
+        ? "/prices/komarnici#kalkulator"
         : null;
   const calculatorLabel =
     item.slug === "pvc-dograma" ? "PVC калкулатор" : item.slug === "komarnitsi" ? "Калкулатор за\nкомарници" : null;
@@ -104,12 +106,12 @@ export function ProductCatalogCard({ item }: { item: ProductCatalogCardData }) {
           {hasCalculator ? (
             <div className="flex flex-col gap-4">
               <div className="flex flex-wrap items-center gap-3">
-                <a
-                  href={EXTERNAL.prices}
+                <Link
+                  href={pricesHref}
                   className="inline-flex items-center justify-center rounded-full bg-brand-800 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-brand-700"
                 >
                   Цени
-                </a>
+                </Link>
                 <Link
                   href="/kontakti"
                   className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-800 transition-colors duration-200 hover:border-brand-800 hover:text-brand-800"
@@ -135,12 +137,12 @@ export function ProductCatalogCard({ item }: { item: ProductCatalogCardData }) {
           ) : (
             <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
               <div className="flex flex-wrap items-center gap-2">
-                <a
-                  href={EXTERNAL.prices}
+                <Link
+                  href={pricesHref}
                   className="inline-flex items-center justify-center rounded-full bg-brand-800 px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-brand-700"
                 >
                   Цени
-                </a>
+                </Link>
                 <Link
                   href="/kontakti"
                   className="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-800 transition-colors duration-200 hover:border-brand-800 hover:text-brand-800"

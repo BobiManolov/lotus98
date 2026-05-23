@@ -188,6 +188,12 @@ export function SiteHeader() {
                       })}
                       <div className="my-1 border-t border-slate-100" />
                       <Link
+                        href="/prices"
+                        className="block px-5 py-2.5 text-[15px] font-semibold text-brand-800 transition-[background-color,color] duration-300 ease-out hover:bg-slate-100 hover:text-brand-900"
+                      >
+                        Цени →
+                      </Link>
+                      <Link
                         href="/produkti"
                         className="block px-5 py-2.5 text-[15px] font-semibold text-brand-800 transition-[background-color,color] duration-300 ease-out hover:bg-slate-100 hover:text-brand-900"
                       >
@@ -330,6 +336,14 @@ export function SiteHeader() {
                     </Link>
                   </div>
                 ))}
+                <div className="my-1 border-t border-slate-100" />
+                <Link
+                  href="/prices"
+                  className="block px-5 py-2.5 text-[15px] font-semibold text-brand-800"
+                  onClick={() => setOpen(false)}
+                >
+                  Цени →
+                </Link>
                 <Link
                   href="/produkti"
                   className="block px-5 py-2.5 text-[15px] font-semibold text-brand-800"

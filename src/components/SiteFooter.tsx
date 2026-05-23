@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { EXTERNAL, NAV, SITE } from "@/content/site";
+import { EXTERNAL, SITE } from "@/content/site";
 
 function PhoneIcon({ className }: { className?: string }) {
   return (
@@ -63,31 +63,85 @@ export function SiteFooter() {
             </div>
           </div>
 
-          {/* Middle — Навигация */}
-          <div className="flex flex-col items-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.14em] text-white">
-              НАВИГАЦИЯ
-            </p>
-            <div className="mt-5 grid grid-cols-2 gap-x-8 gap-y-2">
-              <ul className="flex flex-col gap-3.5">
-                {NAV.main.slice(0, 4).map((item) => (
-                  <li key={item.href}>
-                    <Link href={item.href} className="text-sm text-white transition hover:underline sm:text-[0.9375rem]">
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-              <ul className="flex flex-col gap-3.5">
-                {NAV.main.slice(4).map((item) => (
-                  <li key={item.href}>
-                    <Link href={item.href} className="text-sm text-white transition hover:underline sm:text-[0.9375rem]">
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
+          {/* Middle */}
+          <div className="grid grid-cols-2 gap-x-8">
+            {/* Left column — Продукти */}
+            <div>
+              <p className="text-sm font-bold text-white">
+                Продукти:
+              </p>
+              <ul className="mt-4 flex flex-col gap-3">
+                <li>
+                  <Link href="/produkti/pvc-dograma" className="text-sm text-white transition hover:underline sm:text-[0.9375rem]">
+                    PVC дограма
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/produkti/aluminieva-dograma" className="text-sm text-white transition hover:underline sm:text-[0.9375rem]">
+                    Алуминиева дограма
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/produkti/staklopaketi" className="text-sm text-white transition hover:underline sm:text-[0.9375rem]">
+                    Стъклопакети
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/produkti/komarnitsi" className="text-sm text-white transition hover:underline sm:text-[0.9375rem]">
+                    Комарници
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/produkti/pervazi-i-kozirki" className="text-sm text-white transition hover:underline sm:text-[0.9375rem]">
+                    Первази и козирки
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/produkti/vatreshni-shtori" className="text-sm text-white transition hover:underline sm:text-[0.9375rem]">
+                    Вътрешни щори
+                  </Link>
+                </li>
               </ul>
             </div>
+
+            {/* Right column — misc links */}
+            <ul className="flex flex-col gap-3">
+              <li>
+                <Link href="/prices" className="text-sm text-white transition hover:underline sm:text-[0.9375rem]">
+                  Цени
+                </Link>
+              </li>
+              <li>
+                <Link href="/za-nas" className="text-sm text-white transition hover:underline sm:text-[0.9375rem]">
+                  За нас
+                </Link>
+              </li>
+              <li>
+                <Link href="/uslugi" className="text-sm text-white transition hover:underline sm:text-[0.9375rem]">
+                  Услуги
+                </Link>
+              </li>
+              <li>
+                <Link href="/statii" className="text-sm text-white transition hover:underline sm:text-[0.9375rem]">
+                  Статии
+                </Link>
+              </li>
+              <li>
+                <Link href="/chesto-zadavani-vaprosi" className="text-sm text-white transition hover:underline sm:text-[0.9375rem]">
+                  Често задавани въпроси
+                </Link>
+              </li>
+              <li>
+                <Link href="/galeriya" className="text-sm text-white transition hover:underline sm:text-[0.9375rem]">
+                  Проекти
+                </Link>
+              </li>
+              <li>
+                <Link href="/kontakti" className="text-sm text-white transition hover:underline sm:text-[0.9375rem]">
+                  Контакти
+                </Link>
+              </li>
+            </ul>
           </div>
 
           {/* Right — Работно време и локации */}

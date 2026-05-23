@@ -4,14 +4,31 @@ export const PRICES_OVERVIEW_SUBTITLE = "Разгледайте ориентир
 
 export type PricesPlaceholderRow = { name: string; price: string };
 
+const PRICES_HREF_OVERRIDES: Record<string, string> = {
+  komarnitsi: "/prices/komarnici#kalkulator",
+};
+
+const PRICES_CARD_ORDER = [
+  "pvc-dograma",
+  "al-dograma",
+  "staklopaketi",
+  "komarnitsi",
+  "pervazi",
+  "shtori",
+];
+
 /** Cards on /prices — same slugs as product images for ProductCategoryCard. */
 export function getPricesCategoriesForCards() {
   return PRODUCT_CATEGORIES.map((c) => ({
     slug: c.slug,
     title: c.title,
     short: c.short,
-    href: `/prices/${c.slug}`,
-  }));
+    href: PRICES_HREF_OVERRIDES[c.slug] ?? `/prices/${c.slug}`,
+  })).sort((a, b) => {
+    const ai = PRICES_CARD_ORDER.indexOf(a.slug);
+    const bi = PRICES_CARD_ORDER.indexOf(b.slug);
+    return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
+  });
 }
 
 const DEFAULT_ROWS: PricesPlaceholderRow[] = [

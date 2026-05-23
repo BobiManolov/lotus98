@@ -82,20 +82,12 @@ export default function ServicesPage() {
         title="Услуги"
         subtitle="Предлагаме цялостно съдействие - от първоначалната консултация и огледа на място до изработката, монтажа и последващата поддръжка."
         actions={
-          <>
-            <Link
-              href="/kontakti"
-              className="inline-flex min-w-[156px] items-center justify-center rounded-full bg-brand-800 px-4.5 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
-            >
-              Запитване за оферта
-            </Link>
-            <Link
-              href="/kontakti"
-              className="inline-flex min-w-[122px] items-center justify-center rounded-full border border-white/55 bg-white/12 px-4.5 py-2 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:border-white/80 hover:bg-white/20"
-            >
-              Контакти
-            </Link>
-          </>
+          <Link
+            href="/kontakti"
+            className="inline-flex min-w-[122px] items-center justify-center rounded-full bg-brand-800 px-4.5 py-2 text-sm font-semibold text-white transition-colors hover:bg-brand-700"
+          >
+            Контакти
+          </Link>
         }
       />
 

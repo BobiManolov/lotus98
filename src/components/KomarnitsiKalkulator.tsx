@@ -498,7 +498,7 @@ ${servicesSection}
   const frameHintPrice = form.isColor ? 42 : 30;
 
   return (
-    <section className="border-t border-slate-200/80 bg-[#f8f9fa] py-12 sm:py-16">
+    <section id="kalkulator" className="scroll-mt-24 border-t border-slate-200/80 bg-[#f8f9fa] py-12 sm:py-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
 
         {/* Heading row */}
